@@ -1,0 +1,51 @@
+.navbar{
+    background:#1e3a8a;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 30px;
+    box-shadow:0px 4px 12px rgba(0,0,0,0.15);
+}
+
+.logo{
+    font-size:32px;
+    font-weight:bold;
+}
+
+.nav-links{
+    display:flex;
+    gap:15px;
+}
+
+.nav-btn{
+    background:white;
+    color:#1e3a8a;
+    border:none;
+    padding:10px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.logout-btn{
+    background:#ef4444;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.nav-btn:hover{
+    background:#dbeafe;
+    transform:translateY(-2px);
+}
+
+.logout-btn:hover{
+    background:#dc2626;
+    transform:translateY(-2px);
+}

@@ -1,0 +1,38 @@
+.create-job-container{
+    background:white;
+    width:70%;
+    margin:auto;
+    margin-top:40px;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0px 0px 20px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+.create-job-container h2{
+    color:#1e3a8a;
+    margin-bottom:25px;
+}
+
+.create-job-container input{
+    width:70%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    margin-bottom:20px;
+    font-size:16px;
+}
+
+.create-job-container button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.create-job-container button:hover{
+    background:#1e40af;
+}
