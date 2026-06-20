@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "./JobList.css";
@@ -11,34 +11,33 @@ function MyJobs() {
     localStorage.getItem("user")
   );
 
-  const fetchJobs = async () => {
+ const fetchJobs = useCallback(async () => {
 
-    try {
+  try {
 
-      const res = await axios.get(
+    const res = await axios.get(
 
-        `http://127.0.0.1:5000/api/jobs/builder/${user._id}`
+      `http://127.0.0.1:5000/api/jobs/builder/${user._id}`
 
-      );
+    );
 
-      setJobs(res.data);
+    setJobs(res.data);
 
-    }
+  }
 
-    catch (err) {
+  catch (err) {
 
-      console.log(err);
+    console.log(err);
 
-    }
+  }
 
-  };
-
+}, [user._id]);
 
   useEffect(() => {
 
-    fetchJobs();
+  fetchJobs();
 
-  }, []);
+}, [fetchJobs]);
 
 
  const handleAcceptWorker = async (jobId, workerId) => {

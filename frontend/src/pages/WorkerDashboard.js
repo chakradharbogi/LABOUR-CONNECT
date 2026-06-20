@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Navbar from "../components/Navbar";
@@ -18,77 +18,76 @@ function WorkerDashboard() {
     localStorage.getItem("user")
   );
 
-  const fetchJobs = async () => {
+  const fetchJobs = useCallback(async () => {
 
-    try {
+  try {
 
-      const res = await axios.get(
-        "http://127.0.0.1:5000/api/jobs"
-      );
+    const res = await axios.get(
+      "http://127.0.0.1:5000/api/jobs"
+    );
 
-      const allJobs = res.data;
+    const allJobs = res.data;
 
-      setJobs(allJobs);
+    setJobs(allJobs);
 
-      const applied = allJobs.filter(
+    const applied = allJobs.filter(
+
+      (job) =>
+
+        job.applicants?.some(
+
+          (worker) => worker._id === user._id
+
+        )
+
+    );
+
+    setAppliedCount(
+      applied.length
+    );
+
+    setSelectedCount(
+
+      applied.filter(
 
         (job) =>
 
-          job.applicants?.some(
+          job.selectedWorker &&
 
-            (worker) => worker._id === user._id
+          job.selectedWorker._id === user._id
 
-          )
+      ).length
 
-      );
+    );
 
-      setAppliedCount(
-        applied.length
-      );
+    setCompletedCount(
 
-      setSelectedCount(
+      applied.filter(
 
-        applied.filter(
+        (job) =>
 
-          (job) =>
+          job.status === "completed"
 
-            job.selectedWorker &&
+      ).length
 
-            job.selectedWorker._id === user._id
+    );
 
-        ).length
+  }
 
-      );
+  catch (err) {
 
-      setCompletedCount(
+    console.log(err);
 
-        applied.filter(
+  }
 
-          (job) =>
-
-            job.status === "completed"
-
-        ).length
-
-      );
-
-    }
-
-    catch (err) {
-
-      console.log(err);
-
-    }
-
-  };
+}, [user._id]);
 
 
-  useEffect(() => {
+useEffect(() => {
 
-    fetchJobs();
+  fetchJobs();
 
-  }, []);
-
+}, [fetchJobs]);
 
   const handleApply = async (jobId) => {
 
