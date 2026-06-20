@@ -16,7 +16,7 @@ function JobList() {
 
       const res = await axios.get(
 
-        `http://127.0.0.1:5000/api/jobs/builder/${user._id}`
+        `https://labour-connect-backend-tql9.onrender.com/api/jobs/builder/${user._id}`
 
       );
 
@@ -46,7 +46,7 @@ function JobList() {
 
       const res = await axios.put(
 
-        `http://127.0.0.1:5000/api/jobs/accept/${jobId}`,
+        `https://labour-connect-backend-tql9.onrender.com/api/jobs/accept/${jobId}`,
 
         {
           workerId
@@ -81,7 +81,7 @@ function JobList() {
 
       const res = await axios.put(
 
-        `http://127.0.0.1:5000/api/jobs/complete/${jobId}`
+        `https://labour-connect-backend-tql9.onrender.com/api/jobs/complete/${jobId}`
 
       );
 

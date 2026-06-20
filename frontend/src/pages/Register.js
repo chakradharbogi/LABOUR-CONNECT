@@ -34,7 +34,7 @@ function Register() {
 
       const res = await axios.post(
 
-        "http://127.0.0.1:5000/api/users/register",
+        "https://labour-connect-backend-tql9.onrender.com/api/users/register",
 
         form
 

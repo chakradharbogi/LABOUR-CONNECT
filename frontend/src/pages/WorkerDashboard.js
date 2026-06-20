@@ -23,7 +23,7 @@ function WorkerDashboard() {
   try {
 
     const res = await axios.get(
-      "http://127.0.0.1:5000/api/jobs"
+      "https://labour-connect-backend-tql9.onrender.com/api/jobs"
     );
 
     const allJobs = res.data;
@@ -95,7 +95,7 @@ useEffect(() => {
 
       const res = await axios.put(
 
-        `http://127.0.0.1:5000/api/jobs/apply/${jobId}`,
+        `https://labour-connect-backend-tql9.onrender.com/api/jobs/apply/${jobId}`,
 
         {
           workerId: user._id
