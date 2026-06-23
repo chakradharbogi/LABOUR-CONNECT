@@ -833,13 +833,16 @@ function MyJobs() {
               </p>
 
               <p>
+                🔧 Skill : {selectedProfile.skill}
+              </p>
+
+              <p>
                 ⭐ Rating : {selectedProfile.rating?.toFixed(1)}
               </p>
 
               <p>
                 📊 Total Ratings : {selectedProfile.totalRatings}
               </p>
-
               <button
 
                 style={{
