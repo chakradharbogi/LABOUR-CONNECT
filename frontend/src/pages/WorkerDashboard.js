@@ -20,74 +20,74 @@ function WorkerDashboard() {
 
   const fetchJobs = useCallback(async () => {
 
-  try {
+    try {
 
-    const res = await axios.get(
-      "https://labour-connect-backend-tql9.onrender.com/api/jobs"
-    );
+      const res = await axios.get(
+        "https://labour-connect-backend-tql9.onrender.com/api/jobs"
+      );
 
-    const allJobs = res.data;
+      const allJobs = res.data;
 
-    setJobs(allJobs);
+      setJobs(allJobs);
 
-    const applied = allJobs.filter(
-
-      (job) =>
-
-        job.applicants?.some(
-
-          (worker) => worker._id === user._id
-
-        )
-
-    );
-
-    setAppliedCount(
-      applied.length
-    );
-
-    setSelectedCount(
-
-      applied.filter(
+      const applied = allJobs.filter(
 
         (job) =>
 
-          job.selectedWorker &&
+          job.applicants?.some(
 
-          job.selectedWorker._id === user._id
+            (worker) => worker._id === user._id
 
-      ).length
+          )
 
-    );
+      );
 
-    setCompletedCount(
+      setAppliedCount(
+        applied.length
+      );
 
-      applied.filter(
+      setSelectedCount(
 
-        (job) =>
+        applied.filter(
 
-          job.status === "completed"
+          (job) =>
 
-      ).length
+            job.selectedWorker &&
 
-    );
+            job.selectedWorker._id === user._id
 
-  }
+        ).length
 
-  catch (err) {
+      );
 
-    console.log(err);
+      setCompletedCount(
 
-  }
+        applied.filter(
 
-}, [user._id]);
+          (job) =>
+
+            job.status === "completed"
+
+        ).length
+
+      );
+
+    }
+
+    catch (err) {
+
+      console.log(err);
+
+    }
+
+  }, [user._id]);
 
 
-useEffect(() => {
+  useEffect(() => {
 
-  fetchJobs();
+    fetchJobs();
 
-}, [fetchJobs]);
+  }, [fetchJobs]);
 
   const handleApply = async (jobId) => {
 
@@ -281,6 +281,14 @@ useEffect(() => {
 
               <p>
 
+                🔧 Skill Required :
+                {" "}
+                {job.requiredSkill}
+
+              </p>
+
+              <p>
+
                 👷 Workers Required :
                 {" "}
                 {job.workersRequired}
@@ -294,7 +302,6 @@ useEffect(() => {
                 ₹{job.wage}
 
               </p>
-
               <p>
 
                 📅 Date :
@@ -411,6 +418,14 @@ useEffect(() => {
                 📍 {job.location}
 
               </h3>
+
+              <p>
+
+                🔧 Skill Required :
+                {" "}
+                {job.requiredSkill}
+
+              </p>
 
               <p>
 
