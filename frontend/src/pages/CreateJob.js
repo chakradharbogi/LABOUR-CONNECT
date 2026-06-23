@@ -6,10 +6,17 @@ import "./CreateJob.css";
 function CreateJob() {
 
   const [job, setJob] = useState({
+
     workersRequired: "",
+
+    requiredSkill: "",
+
     location: "",
+
     date: "",
+
     wage: ""
+
   });
 
   const user = JSON.parse(
@@ -47,14 +54,14 @@ function CreateJob() {
       );
 
       toast.success(
-
         res.data.message
-
       );
 
       setJob({
 
         workersRequired: "",
+
+        requiredSkill: "",
 
         location: "",
 
@@ -103,6 +110,60 @@ function CreateJob() {
         onChange={handleChange}
 
       />
+
+      <select
+
+        name="requiredSkill"
+
+        value={job.requiredSkill}
+
+        onChange={handleChange}
+
+      >
+
+        <option value="">
+
+          Required Skill
+
+        </option>
+
+        <option value="Mason">
+
+          Mason
+
+        </option>
+
+        <option value="Painter">
+
+          Painter
+
+        </option>
+
+        <option value="Electrician">
+
+          Electrician
+
+        </option>
+
+        <option value="Plumber">
+
+          Plumber
+
+        </option>
+
+        <option value="Carpenter">
+
+          Carpenter
+
+        </option>
+
+        <option value="Helper">
+
+          Helper
+
+        </option>
+
+      </select>
 
       <input
 

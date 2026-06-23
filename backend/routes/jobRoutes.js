@@ -12,26 +12,45 @@ router.post("/create", async (req, res) => {
   try {
 
     const {
+
       builderId,
+
       workersRequired,
+
+      requiredSkill,
+
       location,
+
       date,
+
       wage
+
     } = req.body;
 
     const job = new Job({
+
       builderId,
+
       workersRequired,
+
+      requiredSkill,
+
       location,
+
       date,
+
       wage
+
     });
 
     await job.save();
 
     res.status(201).json({
+
       message: "Job created successfully",
+
       job
+
     });
 
   }
@@ -39,13 +58,14 @@ router.post("/create", async (req, res) => {
   catch (error) {
 
     res.status(500).json({
+
       message: error.message
+
     });
 
   }
 
 });
-
 
 // ====================================
 // GET ALL JOBS
