@@ -12,10 +12,11 @@ function Register() {
 
     role: "worker",
 
-    location: ""
+    location: "",
+
+    skill: ""
 
   });
-
   const handleChange = (e) => {
 
     setForm({
@@ -149,7 +150,67 @@ function Register() {
         onChange={handleChange}
 
       />
+      {
 
+        form.role === "worker" && (
+
+          <select
+
+            name="skill"
+
+            value={form.skill}
+
+            onChange={handleChange}
+
+          >
+
+            <option value="">
+
+              Select Skill
+
+            </option>
+
+            <option value="Mason">
+
+              Mason
+
+            </option>
+
+            <option value="Painter">
+
+              Painter
+
+            </option>
+
+            <option value="Electrician">
+
+              Electrician
+
+            </option>
+
+            <option value="Plumber">
+
+              Plumber
+
+            </option>
+
+            <option value="Carpenter">
+
+              Carpenter
+
+            </option>
+
+            <option value="Helper">
+
+              Helper
+
+            </option>
+
+          </select>
+
+        )
+
+      }
       <button
 
         onClick={handleSubmit}

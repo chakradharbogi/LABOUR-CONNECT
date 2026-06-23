@@ -11,7 +11,19 @@ router.post("/register", async (req, res) => {
 
   try {
 
-    const { name, phone, role, location } = req.body;
+    const {
+
+      name,
+
+      phone,
+
+      role,
+
+      location,
+
+      skill
+
+    } = req.body;
 
     const existingUser = await User.findOne({
       phone
@@ -30,7 +42,8 @@ router.post("/register", async (req, res) => {
       name,
       phone,
       role,
-      location
+      location,
+      skill
 
     });
 

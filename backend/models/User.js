@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
   location: {
     type: String,
   },
+  skill: {
+    type: String,
+    default: ""
+  },
   rating: {
     type: Number,
     default: 0,

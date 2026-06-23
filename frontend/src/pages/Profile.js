@@ -9,7 +9,7 @@ function Profile() {
   const stars = "⭐".repeat(
     Math.round(user.rating)
   );
-    return (
+  return (
 
     <div>
 
@@ -69,7 +69,21 @@ function Profile() {
           {user.role}
 
         </h2>
+        {
 
+          user.role === "worker" && (
+
+            <h2>
+
+              🔧 Skill :
+              {" "}
+              {user.skill}
+
+            </h2>
+
+          )
+
+        }
         <hr
           style={{
             marginTop: "30px"
